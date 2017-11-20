@@ -10,7 +10,8 @@ namespace ClassLibrary1.entities
         public Language Language { get; set; }
         public int TextId { get; set; }
         public Text Text { get; set; }
-        public string TranslatedText { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
 
     }
 }

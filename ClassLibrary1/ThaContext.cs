@@ -58,30 +58,25 @@ namespace ClassLibrary1
             context.Languages.Add(usLan);
             context.Languages.Add(enLan);
 
-            var firstTextDK = new TextLanguage { Language = dkLan, TranslatedText = "Smølfer er blå" };
-            var firstTextUS = new TextLanguage { Language = usLan, TranslatedText = "Smurfs are Blue" };
-            var firstTextEN = new TextLanguage { Language = enLan, TranslatedText = "Smurfs are Blue, and a Cup of TEA" };
+            var firstTextDK = new TextLanguage { Language = dkLan,
+                                                 Description = "Smølfer er blå",
+                                                 Title = "Smølferne"};
+            var firstTextUS = new TextLanguage { Language = usLan,
+                                                 Description = "Smurfs are Blue",
+                                                 Title = "Smurfs" };
+            var firstTextEN = new TextLanguage { Language = enLan,
+                                                 Description = "Smurfs are Blue, and a Cup of TEA",
+                                                 Title = "Smurfs, and a Cup of TEA"};
 
             var smurfText = new Text()
             {
                 Languages = new List<TextLanguage> { firstTextDK, firstTextUS, firstTextEN }
             };
             context.Texts.Add(smurfText);
-
-            var firstTitleDK = new TextLanguage { Language = dkLan, TranslatedText = "Smølferne" };
-            var firstTitleUS = new TextLanguage { Language = usLan, TranslatedText = "Smurfs" };
-            var firstTitleEN = new TextLanguage { Language = enLan, TranslatedText = "Smurfs and a Cup of TEA" };
-
-            var smurfTitle = new Text()
-            {
-                Languages = new List<TextLanguage> { firstTitleDK, firstTitleUS, firstTitleEN }
-            };
-            context.Texts.Add(smurfTitle);
-
+            
             context.GlobalGoals.Add(new GlobalGoal()
             {
-                Description = smurfText,
-                Title = smurfTitle
+                Translation = smurfText
             });
 
             context.SaveChanges();

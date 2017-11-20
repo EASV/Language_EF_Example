@@ -11,16 +11,12 @@ namespace ConsoleApp1
         {
             var context = new ThaContext();
             var global = context.GlobalGoals
-                .Include(gg => gg.Title.Languages)
-                .Include(gg => gg.Description.Languages)
+                .Include(gg => gg.Translation.Languages)
                 .FirstOrDefault(gg => gg.Id == 1);
-
-            Console.WriteLine("descr: " + global.Description.Languages
-                                                .FirstOrDefault(l => l.LanguageISO == "US")
-                                                .TranslatedText);
-            Console.WriteLine("title: " + global.Title.Languages
-                                            .FirstOrDefault(l => l.LanguageISO == "US")
-                                            .TranslatedText);
+            var ggText = global.Translation.Languages
+                             .FirstOrDefault(l => l.LanguageISO == "US");
+            Console.WriteLine("descr: " + ggText.Description);
+            Console.WriteLine("title: " + ggText.Title);
 
             Console.WriteLine("Waiting!!!!");
             Console.ReadLine();

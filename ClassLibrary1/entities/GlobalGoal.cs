@@ -8,11 +8,8 @@ namespace ClassLibrary1.entities
     {
         public int Id { get; set; } 
 
-        public int DescriptionId { get; set; }
-        public Text Description { get; set; }
-
-        public int TitleId { get; set; }
-        public Text Title { get; set; }
-
+        public int TranslationId { get; set; }
+        public Text Translation { get; set; }
+        
     }
 }
