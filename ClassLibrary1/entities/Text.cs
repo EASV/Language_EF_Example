@@ -8,6 +8,5 @@ namespace ClassLibrary1.entities
     {
         public int Id { get; set; }
         public List<TextLanguage> Languages { get; set; }
-
     }
 }

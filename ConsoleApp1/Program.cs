@@ -10,11 +10,18 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             var context = new ThaContext();
-            var list = context.GlobalGoals.Include(gg => gg.Description.Languages.Select(l => l.Language));
-            foreach (var item in list)
-            {
-                Console.WriteLine("item: " + item.Description.Languages.FirstOrDefault(l => l.Language.ISO == "DK").TranslatedText);
-            }
+            var global = context.GlobalGoals
+                .Include(gg => gg.Title.Languages)
+                .Include(gg => gg.Description.Languages)
+                .FirstOrDefault(gg => gg.Id == 1);
+
+            Console.WriteLine("descr: " + global.Description.Languages
+                                                .FirstOrDefault(l => l.LanguageISO == "US")
+                                                .TranslatedText);
+            Console.WriteLine("title: " + global.Title.Languages
+                                            .FirstOrDefault(l => l.LanguageISO == "US")
+                                            .TranslatedText);
+
             Console.WriteLine("Waiting!!!!");
             Console.ReadLine();
         }

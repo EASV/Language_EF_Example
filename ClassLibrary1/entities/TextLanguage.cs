@@ -6,7 +6,7 @@ namespace ClassLibrary1.entities
 {
     public class TextLanguage
     {
-        public int LanguageId { get; set; }
+        public string LanguageISO { get; set; }
         public Language Language { get; set; }
         public int TextId { get; set; }
         public Text Text { get; set; }

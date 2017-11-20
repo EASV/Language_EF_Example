@@ -11,12 +11,14 @@ namespace ClassLibrary1
     {
         public ThaContext() : base("theDBConnectionString")
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ThaContext>());
+            Database.SetInitializer(new CustomInitializer<ThaContext>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+            modelBuilder.Entity<Language>().HasKey(l => l.ISO);
 
             modelBuilder.Entity<Text>()
                             .HasMany(t => t.Languages)
@@ -27,7 +29,7 @@ namespace ClassLibrary1
                             .WithRequired(tl => tl.Language);
 
             modelBuilder.Entity<TextLanguage>()
-                .HasKey(tl => new { tl.LanguageId, tl.TextId });
+                .HasKey(tl => new { tl.LanguageISO, tl.TextId });
             
 
             base.OnModelCreating(modelBuilder);

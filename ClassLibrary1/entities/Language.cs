@@ -6,7 +6,6 @@ namespace ClassLibrary1.entities
 {
     public class Language
     {
-        public int Id { get; set; }
         public string ISO { get; set; }
         public string Country { get; set; }
         public List<TextLanguage> Texts { get; set; }
